@@ -4,7 +4,9 @@
             <h1 class="header-h1">{{ h1 }}</h1>
             <p class="header-info">{{ headerInfo }}</p>
         </section>
-
+        <section class="main-section">
+            <h1 class="main-h1">{{ mainH1 }}</h1>
+        </section>
     </div>
 </template>
 
@@ -13,8 +15,9 @@ export default {
     name: 'countComponent',
     data () {
         return {
-            h1: 'Hello, world',
-            headerInfo: 'I"m so excited! This is my first vue.js page! I am learning this framework for a better money on a work and my girlfriend dont need to work as a cashier...'
+            h1: 'Hello, world!',
+            headerInfo: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae dignissimos, ab qui officia consectetur vitae sequi, voluptatibus suscipit distinctio perspiciatis veritatis facere quis illo tempora aspernatur aperiam maxime eaque totam?',
+            mainH1: 'Count Function'
         }
     }
 }
@@ -30,7 +33,7 @@ export default {
     font-family: 'Oswald', sans-serif;
 }
 body {
-    background-color: darkgrey;
+    background-color: rgb(240, 240, 240);
 }
 .header {
     color: white;
@@ -43,9 +46,21 @@ body {
     gap: 20px;
 }
 .header-h1 {
-    font-size: 45px;
+    font-size: 85px;
 }
 .header-info {
-    width: 30%;
+    width: 50%;
+    font-size: 35px;
+}
+.main-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+.main-h1 {
+    font-size: 60px;
 }
 </style>
