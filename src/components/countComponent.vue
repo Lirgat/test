@@ -1,25 +1,32 @@
 <template>
     <div class="root">
-        <section class="header">
+        <header class="header">
             <h1 class="header-h1">{{ h1 }}</h1>
             <p class="header-info">{{ headerInfo }}</p>
-        </section>
-        <section class="main-section">
-            <h1 class="main-h1">{{ mainH1 }}</h1>
-            <div class="main-count">
-                <p class="main-count__p">Попробуй функцию!</p>
-                <div class="main-count__block">
-                    <button class="button decrease" type="button" @click="decresaseCount">-</button>
-                    <input class="main-count__block_input"
-                    type="number" 
-                    :value="count"
-                    :min="minCount"
-                    :max="maxCount"
-                    >
-                    <button class="button increase" type="button" @click="increaseCount">+</button>
+        </header>
+        <main class="main-section">
+            <article class="main-article">
+                <h1 class="main-h1">{{ mainH1 }}</h1>
+                <div class="main-count">
+                    <p class="main-count__p">Попробуй функцию!</p>
+                    <div class="main-count__block">
+                        <button class="button decrease" type="button" @click="decresaseCount">-</button>
+                        <input class="main-count__block_input"
+                        type="number" 
+                        :value="count"
+                        :min="minCount"
+                        :max="maxCount"
+                        >
+                        <button class="button increase" type="button" @click="increaseCount">+</button>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </article>
+            <article class="main-article">
+                <h1 class="main-h1">{{ mainH1 }}</h1>
+            </article>
+        </main>
+        <footer class="footer">
+        </footer>
     </div>
 </template>
 
@@ -79,11 +86,15 @@ body {
     padding: 20px;
 }
 .header-info {
-    width: 50%;
     font-size: 35px;
     padding: 20px;
 }
 .main-section {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+.main-article {
     display: flex;
     flex-direction: column;
     gap: 20px;
