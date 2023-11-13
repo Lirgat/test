@@ -11,7 +11,7 @@
                     <p class="main-count__p border-block__insideName">Попробуй функцию!</p>
                     <div class="main-count__block">
                         <button class="button decrease" type="button" @click="decresaseCount">-</button>
-                        <input class="main-count__block_input input"
+                        <input class="main-count__block_input"
                         type="number" 
                         :value="count"
                         :min="minCount"
@@ -33,6 +33,22 @@
                 <p class="output">{{ text }}</p>
                 </div>
             </article>
+            <article class="main-article">
+                <h1 class="main-h1">Функция поиска по списку</h1>
+                <div class="main-input border-block">
+                    <label class="input__name border-block__insideName">Найдите то, что искали</label>
+                    <input сlass="cool-input" type="text" @input="searchText = $event.target.value">
+                    <p class="fullStuff">Всего барахла: {{ stuffs.length }}, совпадений: {{  getFilteredStuff.length }}</p>
+                    <ul class="list">
+                        <li
+                        v-for="(stuff, index) in getFilteredStuff"
+                        :key="index"
+                        >
+                        {{ stuff }}
+                        </li>
+                    </ul>
+                </div>
+            </article>
         </main>
         <footer class="footer">
         </footer>
@@ -45,12 +61,14 @@ export default {
     data () {
         return {
             h1: 'Привет, всем!',
-            headerInfo: 'Моя первая страница на Vue.js, которая будет содержать различные функции',
+            headerInfo: 'Моя страница на Vue.js, которая будет содержать различные функции. Всё что здесь есть - будет на Vue.js',
             mainH1: 'Функция счёта',
             count: 1, 
             maxCount: 10,
             minCount: 1,
-            text: ''
+            text: '',
+            searchText: '',
+            stuffs: ['Манка', 'Шоколадка', 'Утка', 'Гречка', 'Топор', 'Пиво', 'Крапива', 'Отвёртка', 'Кумыс', 'Утюг', 'Трансиллюминатор кожи', 'SEGA', 'Яйцо', 'Решётка', 'Граната']
         }
     },
     methods: {
@@ -65,6 +83,11 @@ export default {
         },
         textInput(value) {
             this.text = value
+        }
+    },
+    computed: {
+        getFilteredStuff() {
+            return this.stuffs.filter(stuff => stuff.toLowerCase().includes(this.searchText.toLowerCase()))
         }
     }
 }
@@ -151,7 +174,7 @@ body {
 .main-count__block_input, .input {
     font-size: 50px;
     text-align: center;
-    border: none;
+    border: 3px solid black;
     
 }
 .button:hover {
@@ -160,5 +183,16 @@ body {
 }
 .output {
     font-size: 35px;
+    color: rgb(255, 72, 72);
+}
+.fullStuff, .list {
+    font-size: 25px;
+}
+.list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-height: 222px;
 }
 </style>
