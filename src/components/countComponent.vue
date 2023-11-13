@@ -91,6 +91,7 @@ body {
     gap: 20px;
     background-color: white;
     border: 5px solid black;
+    position: sticky;
 }
 .header-h1 {
     font-size: 85px;
