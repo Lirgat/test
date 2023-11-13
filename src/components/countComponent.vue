@@ -7,11 +7,11 @@
         <main class="main-section">
             <article class="main-article">
                 <h1 class="main-h1">{{ mainH1 }}</h1>
-                <div class="main-count">
-                    <p class="main-count__p">Попробуй функцию!</p>
+                <div class="main-count border-block">
+                    <p class="main-count__p border-block__insideName">Попробуй функцию!</p>
                     <div class="main-count__block">
                         <button class="button decrease" type="button" @click="decresaseCount">-</button>
-                        <input class="main-count__block_input"
+                        <input class="main-count__block_input input"
                         type="number" 
                         :value="count"
                         :min="minCount"
@@ -22,7 +22,16 @@
                 </div>
             </article>
             <article class="main-article">
-                <h1 class="main-h1">{{ mainH1 }}</h1>
+                <h1 class="main-h1">Функция вывода написанного на экран</h1>
+                <div class="main-input border-block">
+                    <label class="input__name border-block__insideName">Введите данные</label>
+                    <input placeholder="Сюда вот)" сlass="input"
+                    type="text"
+                    :value="text"
+                    @input="textInput($event.target.value)"
+                    >
+                <p class="output">{{ text }}</p>
+                </div>
             </article>
         </main>
         <footer class="footer">
@@ -40,7 +49,8 @@ export default {
             mainH1: 'Функция счёта',
             count: 1, 
             maxCount: 10,
-            minCount: 1
+            minCount: 1,
+            text: ''
         }
     },
     methods: {
@@ -52,6 +62,9 @@ export default {
             if (this.count > this.minCount) {
                 this.count--
             }
+        },
+        textInput(value) {
+            this.text = value
         }
     }
 }
@@ -105,7 +118,7 @@ body {
 .main-h1 {
     font-size: 70px;
 }
-.main-count {
+.main-count, .border-block {
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -117,7 +130,7 @@ body {
     box-shadow: 16px 18px 2px -2px rgba(0, 0, 0, 0.19);
     width: 40%;
 }
-.main-count__p {
+.main-count__p, .border-block__insideName {
     font-size: 35px;
 
 }
@@ -134,7 +147,7 @@ body {
     background-color: white;
     cursor: pointer;
 }
-.main-count__block_input {
+.main-count__block_input, .input {
     font-size: 50px;
     text-align: center;
     border: none;
@@ -143,5 +156,8 @@ body {
 .button:hover {
     color: red;
     transition: 0.5s;
+}
+.output {
+    font-size: 35px;
 }
 </style>
